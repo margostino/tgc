@@ -1,0 +1,10 @@
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\obj\Debug\AlumnoEjemplos.dll
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\obj\Debug\AlumnoEjemplos.pdb
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\AlumnoEjemplos.dll
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\AlumnoEjemplos.pdb
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\TgcViewer.exe
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\Ionic.Zip.dll
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\TgcViewer.pdb
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\obj\Debug\AlumnoEjemplos.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\obj\Debug\AlumnoEjemplos.ChallengeAccepted.DropdownControl.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\AlumnoEjemplos\obj\Debug\AlumnoEjemplos.csproj.GenerateResource.Cache

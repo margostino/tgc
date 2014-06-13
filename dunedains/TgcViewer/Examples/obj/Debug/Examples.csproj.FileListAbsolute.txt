@@ -1,0 +1,17 @@
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.MeshCreator.MeshCreatorControl.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.Otros.EjemploDefaultHelpForm.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.Properties.Resources.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.RoomsEditor.RoomsEditorControl.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.RoomsEditor.RoomsEditorHelpWindow.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.RoomsEditor.RoomsEditorMapView.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.RoomsEditor.RoomsEditorTexturesEdit.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.TerrainEditor.Panel.TerrainEditorControl.resources
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.csproj.GenerateResource.Cache
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.dll
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\obj\Debug\Examples.pdb
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\Examples.dll
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\Examples.pdb
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\Ionic.Zip.dll
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\TgcViewer.exe
+C:\Users\Martin\Documents\GitHub\utn\tgc\dunedains\TgcViewer\Examples\TgcViewer.pdb

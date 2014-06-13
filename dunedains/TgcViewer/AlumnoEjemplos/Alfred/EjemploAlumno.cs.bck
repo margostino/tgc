@@ -1,0 +1,150 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using TgcViewer.Example;
+using TgcViewer;
+using Microsoft.DirectX.Direct3D;
+using System.Drawing;
+using Microsoft.DirectX;
+using TgcViewer.Utils.Modifiers;
+using TgcViewer.Utils.TgcSceneLoader;
+using TgcViewer.Utils.TgcGeometry;
+
+namespace AlumnoEjemplos.MiGrupo
+{
+    /// <summary>
+    /// Ejemplo del alumno
+    /// </summary>
+    public class EjemploAlumno : TgcExample
+    {
+
+        Texture texture;
+        VertexBuffer vertexBuffer;
+
+        /// <summary>
+        /// Categoría a la que pertenece el ejemplo.
+        /// Influye en donde se va a haber en el árbol de la derecha de la pantalla.
+        /// </summary>
+        public override string getCategory()
+        {
+            return "AlumnoEjemplos";
+        }
+
+        /// <summary>
+        /// Completar nombre del grupo en formato Grupo NN
+        /// </summary>
+        public override string getName()
+        {
+            return "Grupo 99";
+        }
+
+        /// <summary>
+        /// Completar con la descripción del TP
+        /// </summary>
+        public override string getDescription()
+        {
+            return "MiIdea - Descripcion de la idea";
+        }
+
+        /// <summary>
+        /// Método que se llama una sola vez,  al principio cuando se ejecuta el ejemplo.
+        /// Escribir aquí todo el código de inicialización: cargar modelos, texturas, modifiers, uservars, etc.
+        /// Borrar todo lo que no haga falta
+        /// </summary>
+        public override void init()
+        {
+            Device d3dDevice = GuiController.Instance.D3dDevice;
+
+            //Current texture
+            string currentTexurePah = GuiController.Instance.ExamplesMediaDir + "Texturas" + "\\" + "tellyfx2.jpg";
+            texture = TextureLoader.FromFile(d3dDevice, currentTexurePah);
+
+            //Crear vertexBuffer
+            vertexBuffer = new VertexBuffer(typeof(CustomVertex.PositionColoredTextured), 6, d3dDevice, Usage.Dynamic | Usage.WriteOnly, CustomVertex.PositionColoredTextured.Format, Pool.Default);
+
+
+            //Crear triangulo segun datos del usuario
+            CustomVertex.PositionColoredTextured[] data = new CustomVertex.PositionColoredTextured[6];
+
+            //Triangulo
+            //vertice 1
+            Vector3 v1 = new Vector3(1, 0, -1);
+            Vector2 t1 = new Vector2(0, 1);
+            data[0] = new CustomVertex.PositionColoredTextured(v1.X, v1.Y, v1.Z, Color.White.ToArgb(), t1.X, t1.Y);
+
+            //vertice 2
+            Vector3 v2 = new Vector3(1, 0, 1);
+            Vector2 t2 = new Vector2(0, 0);
+            data[1] = new CustomVertex.PositionColoredTextured(v2.X, v2.Y, v2.Z, Color.White.ToArgb(), t2.X, t2.Y);
+
+            //vertice 3
+            Vector3 v3 = new Vector3(-1, 0, -1);
+            Vector2 t3 = new Vector2(1, 1);
+            data[2] = new CustomVertex.PositionColoredTextured(v3.X, v3.Y, v3.Z, Color.White.ToArgb(), t3.X, t3.Y);
+
+            //Triangulo
+            //vertice 1
+            Vector3 v4 = new Vector3(1, 0, 1);
+            Vector2 t4 = new Vector2(0, 0);
+            data[3] = new CustomVertex.PositionColoredTextured(v4.X, v4.Y, v4.Z, Color.White.ToArgb(), t4.X, t4.Y);
+
+            //vertice 2
+            Vector3 v5 = new Vector3(-1, 0, 1);
+            Vector2 t5 = new Vector2(1, 0);
+            data[4] = new CustomVertex.PositionColoredTextured(v5.X, v5.Y, v5.Z, Color.White.ToArgb(), t5.X, t5.Y);
+
+            //vertice 3
+            Vector3 v6 = new Vector3(-1, 0, -1);
+            Vector2 t6 = new Vector2(1, 1);
+            data[5] = new CustomVertex.PositionColoredTextured(v6.X, v6.Y, v6.Z, Color.White.ToArgb(), t6.X, t6.Y);
+
+
+
+            //Almacenar información en VertexBuffer
+            vertexBuffer.SetData(data, 0, LockFlags.None);
+
+
+            //Configurar camara en rotacion
+            GuiController.Instance.RotCamera.setCamera(new Vector3(0, 0.5f, 0), 3f);
+
+        }
+
+
+
+        /// <summary>
+        /// Método que se llama cada vez que hay que refrescar la pantalla.
+        /// Escribir aquí todo el código referido al renderizado.
+        /// Borrar todo lo que no haga falta
+        /// </summary>
+        /// <param name="elapsedTime">Tiempo en segundos transcurridos desde el último frame</param>
+        public override void render(float elapsedTime)
+        {
+
+            Device d3dDevice = GuiController.Instance.D3dDevice;
+
+
+            //Rotacion
+            d3dDevice.Transform.World = Matrix.Identity * Matrix.RotationY(0f);
+
+            //Habilitar textura
+            d3dDevice.SetTexture(0, texture);
+            //Especificar formato de triangulos
+            d3dDevice.VertexFormat = CustomVertex.PositionColoredTextured.Format;
+            //Cargar VertexBuffer a renderizar
+            d3dDevice.SetStreamSource(0, vertexBuffer, 0);
+            //Dibujar 1 primitiva
+            d3dDevice.DrawPrimitives(PrimitiveType.TriangleList, 0, 2);
+
+        }
+
+        /// <summary>
+        /// Método que se llama cuando termina la ejecución del ejemplo.
+        /// Hacer dispose() de todos los objetos creados.
+        /// </summary>
+        public override void close()
+        {
+
+        }
+
+    }
+}

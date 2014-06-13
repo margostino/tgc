@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.DirectX.Direct3D;
+using TgcViewer;
+using Microsoft.DirectX;
+using System.Drawing;
+
+namespace AlumnoEjemplos.MiGrupo
+{
+    public class Agua
+    {
+
+        public const int DIMENSION = 1;
+        public const int TOTAL_CUADRADOS = DIMENSION * DIMENSION;
+        public const int TOTAL_TRIANGULOS = TOTAL_CUADRADOS * 2;
+        public const int TOTAL_VERTICES = TOTAL_TRIANGULOS * 3;
+        public const int TOTAL_VERTICES_CUADRADO = TOTAL_CUADRADOS * 4;
+        public const int HEIGHT_CENTER = 0;
+
+        static Texture texture;
+        static VertexBuffer vertexBuffer;
+        static IndexBuffer indexBuffer;
+
+        public static void init()
+        {
+            Device d3dDevice = GuiController.Instance.D3dDevice;
+
+            //Current texture
+            string currentTexurePah = GuiController.Instance.ExamplesMediaDir + "Texturas" + "\\" + "tellyfx2.jpg";
+            texture = TextureLoader.FromFile(d3dDevice, currentTexurePah);
+
+            //Crear vertexBuffer
+            vertexBuffer = new VertexBuffer(typeof(CustomVertex.PositionColoredTextured), TOTAL_VERTICES, d3dDevice, Usage.Dynamic | Usage.WriteOnly, CustomVertex.PositionColoredTextured.Format, Pool.Default);
+            indexBuffer = new IndexBuffer(typeof(int), TOTAL_VERTICES, d3dDevice, Usage.Dynamic | Usage.WriteOnly, Pool.Default);
+
+
+            //Crear triangulo segun datos del usuario
+            CustomVertex.PositionColoredTextured[] data = new CustomVertex.PositionColoredTextured[TOTAL_VERTICES_CUADRADO];
+            int[] indice = new int[TOTAL_VERTICES];
+
+            for (int i = 0; i < TOTAL_CUADRADOS; i++) 
+            {
+                //Cuadrado
+                //vertice 1
+                Vector3 v1 = new Vector3(1, HEIGHT_CENTER, -1);
+                Vector2 t1 = new Vector2(0, 1);
+                data[0] = new CustomVertex.PositionColoredTextured(v1.X, v1.Y, v1.Z, Color.White.ToArgb(), t1.X, t1.Y);
+
+                //vertice 2
+                Vector3 v2 = new Vector3(1, HEIGHT_CENTER, 1);
+                Vector2 t2 = new Vector2(0, 0);
+                data[1] = new CustomVertex.PositionColoredTextured(v2.X, v2.Y, v2.Z, Color.White.ToArgb(), t2.X, t2.Y);
+
+                //vertice 3
+                Vector3 v3 = new Vector3(-1, HEIGHT_CENTER, 1);
+                Vector2 t3 = new Vector2(1, 0);
+                data[2] = new CustomVertex.PositionColoredTextured(v3.X, v3.Y, v3.Z, Color.White.ToArgb(), t3.X, t3.Y);
+
+                //vertice 4
+                Vector3 v4 = new Vector3(-1, HEIGHT_CENTER, -1);
+                Vector2 t4 = new Vector2(1, 1);
+                data[3] = new CustomVertex.PositionColoredTextured(v4.X, v4.Y, v4.Z, Color.White.ToArgb(), t4.X, t4.Y);
+
+                //Buffer
+                indice[0] = 0;
+                indice[1] = 1;
+                indice[2] = 2;
+                indice[3] = 3;
+                indice[4] = 0;
+                indice[5] = 2;
+            }
+
+            //Almacenar información en VertexBuffer
+            vertexBuffer.SetData(data, 0, LockFlags.None);
+            indexBuffer.SetData(indice, 0, LockFlags.None);
+
+            //Rotacion
+            d3dDevice.Transform.World = Matrix.Identity * Matrix.RotationY(0f);
+        }
+
+        public static void render()
+        {
+            Device d3dDevice = GuiController.Instance.D3dDevice;
+
+            //Habilitar textura
+            d3dDevice.SetTexture(0, texture);
+            //Especificar formato de triangulos
+            d3dDevice.VertexFormat = CustomVertex.PositionColoredTextured.Format;
+            //Cargar VertexBuffer a renderizar
+            d3dDevice.SetStreamSource(0, vertexBuffer, 0);
+            d3dDevice.Indices = indexBuffer;
+            //Dibujar 1 primitiva
+            d3dDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, TOTAL_VERTICES_CUADRADO, 0, TOTAL_TRIANGULOS);
+        }
+    }
+}
